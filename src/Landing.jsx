@@ -1,5 +1,6 @@
 import React from 'react';
-import { Search, Star, Users, Camera, Hammer, LogIn } from 'lucide-react';
+import { Search, Star, Users, Camera, Hammer, LogIn, Instagram, Youtube, Linkedin, Apple, Play, ShieldCheck } from 'lucide-react';
+
 import Rectangle1 from './assets/Rectangle1.png';
 import Rectangle2 from './assets/Rectangle2.png';
 import Rectangle3 from './assets/Rectangle3.png';
@@ -7,6 +8,7 @@ import image1 from './assets/image1.svg';
 import image2 from './assets/image2.svg';
 import image3 from './assets/image3.svg';
 import image4 from './assets/image4.svg';
+import mockCelular from  './assets/mockCelular.png'
 
 export default function Landing() {
   return (
@@ -186,8 +188,61 @@ function HowItWorks() {
 
 function Footer() {
   return (
-    <footer className="bg-[#F5EBD7] py-6 mt-10 text-center text-sm text-gray-700">
-      @2025 Ajeitaí - Todos os direitos reservados
+    <footer className="relative bg-[#F5EBD7] py-10 mt-auto text-gray-700 overflow-hidden">
+      <div className="max-w-6xl mx-auto flex justify-between items-end px-6 relative">
+        
+        {/* Coluna esquerda (logo e links) */}
+        <div className="flex flex-col space-y-4">
+          <div className="font-bold text-lg text-[#F4A300]">Ajeitaí</div>
+          <div className="flex space-x-6 text-sm">
+            <a href="#" className="hover:underline">Termos de Uso</a>
+            <a href="#" className="hover:underline">Política de Privacidade</a>
+          </div>
+        </div>
+
+        {/* Texto centralizado */}
+        <div className="flex-1 text-center text-sm mt-10">
+          © 2025 Ajeitaí — Todos os direitos reservados
+        </div>
+
+        {/* Coluna direita - Redes sociais / Downloads / Certificação */}
+        <div className="flex flex-col text-right space-y-5 mr-44">
+          {/* Redes sociais */}
+          <div>
+            <div className="font-semibold mb-1">Redes sociais</div>
+            <div className="flex justify-end space-x-3">
+              <a href="#" className="hover:text-[#FF66CC] transition"><Instagram size={20} /></a>
+              <a href="#" className="hover:text-[#FF0000] transition"><Youtube size={20} /></a>
+              <a href="#" className="hover:text-[#0077B5] transition"><Linkedin size={20} /></a>
+            </div>
+          </div>
+
+          {/* Downloads */}
+          <div>
+            <div className="font-semibold mb-1">Downloads</div>
+            <div className="flex justify-end space-x-3">
+              <a href="#" className="hover:text-gray-900 transition"><Apple size={20} /></a>
+              <a href="#" className="hover:text-green-600 transition"><Play size={20} /></a>
+            </div>
+          </div>
+
+          {/* Certificações */}
+          <div>
+            <div className="font-semibold mb-1">Certificações</div>
+            <div className="flex justify-end items-center space-x-2">
+              <ShieldCheck size={20} className="text-green-700" />
+              <span className="text-sm font-medium">RA1000</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Imagem do celular no canto inferior direito */}
+        <img
+          src={mockCelular}
+          alt="Celular"
+          className="relative bottom-0 right-0 w-40 h-70 pointer-events-none"
+        />
+      </div>
     </footer>
   );
 }
