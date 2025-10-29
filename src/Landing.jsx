@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, Star, Users, Camera, Hammer, LogIn, Instagram, Youtube, Linkedin, Apple, Play, ShieldCheck } from 'lucide-react';
+import { Search, Star, Users, Camera, Hammer, LogIn, Instagram, Youtube, Linkedin, Apple, Play, ShieldCheck, ChevronRightIcon, ChevronLeftIcon } from 'lucide-react';
 
 import Rectangle1 from './assets/Rectangle1.png';
 import Rectangle2 from './assets/Rectangle2.png';
@@ -9,6 +9,12 @@ import image2 from './assets/image2.svg';
 import image3 from './assets/image3.svg';
 import image4 from './assets/image4.svg';
 import mockCelular from  './assets/mockCelular.png'
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+
 
 export default function Landing() {
   return (
@@ -17,7 +23,9 @@ export default function Landing() {
       <Hero />
       <PopularGrid />
       <HowItWorks />
+      <Testimonials/>
       <Footer />
+      
     </div>
   );
 }
@@ -182,6 +190,78 @@ function HowItWorks() {
           </p>
         </div>
       </div>
+    </section>
+  );
+}
+
+//relatos mockados
+const relatos = [
+  {
+    id: 1,
+    nome: "Maria Oliveira",
+    texto:
+      "Encontrei uma diarista excelente pelo Ajeitaí! O serviço foi rápido, seguro e muito prático de contratar.",
+    img: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8bXVsaGVyfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=500'
+  },
+  {
+    id: 2,
+    nome: "Carlos Souza",
+    texto:
+      "O encanador chegou no horário e resolveu tudo na hora. Gostei muito da experiência!",
+    img:'https://plus.unsplash.com/premium_photo-1689977927774-401b12d137d6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8aG9tbWV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=500',
+  },
+  {
+    id: 3,
+    nome: "Ana Paula",
+    texto:
+      "Gostei do suporte e da facilidade de comparar profissionais. A plataforma é muito intuitiva!",
+    img: 'https://plus.unsplash.com/premium_photo-1705018501151-4045c97658a3?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fG11bGhlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=500'
+  },
+  {
+    id: 4,
+    nome: "Rafael Mendes",
+    texto:
+      "Usei para contratar um eletricista e o serviço foi impecável. Recomendo totalmente!",
+    img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8aG9tZW18ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=500'
+  },
+];
+
+function Testimonials() {
+  return (
+    <section className="max-w-5xl mx-auto py-20 px-6 text-center">
+      <h2 className="text-3xl font-bold mb-10">O que dizem nossos usuários</h2>
+
+      <Swiper
+        modules={[Navigation, Pagination, Autoplay]}
+        slidesPerView={1}
+        spaceBetween={30}
+        navigation
+        pagination={{ clickable: true }}
+        autoplay={{ delay: 4000, disableOnInteraction: false }}
+        loop={true}
+        className="w-full"
+      >
+        {relatos.map((relato) => (
+          <SwiperSlide key={relato.id}>
+            <div className="bg-[#FFF9E6] rounded-2xl shadow-md  my-10 py-10 p-10 max-w-2xl mx-auto text-gray-800 relative">
+    {/* Imagem de perfil */}
+    <img
+      src={relato.img}
+      alt={relato.nome}
+      className="w-24 h-24 rounded-full object-cover border-4 border-white shadow-md absolute -top-8 left-1/2 transform -translate-x-1/2"
+    />
+
+    <div className="pt-10">
+      <p className="italic mb-4 text-lg">“{relato.texto}”</p>
+      <p className="font-semibold text-yellow-700">— {relato.nome}</p>
+    </div>
+  </div>
+          </SwiperSlide>
+          
+        ))}
+      </Swiper>
+
+      
     </section>
   );
 }
